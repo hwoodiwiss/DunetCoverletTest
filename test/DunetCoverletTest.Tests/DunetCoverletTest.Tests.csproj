@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DunetCoverletTest\DunetCoverletTest.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">
+    <CollectCoverage>true</CollectCoverage>
+    <!-- TODO: Update this back to 70 once we have a feature to integration test -->
+    <Threshold>50</Threshold>
+  </PropertyGroup>
+
+</Project>

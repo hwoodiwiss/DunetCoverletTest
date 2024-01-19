@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+    <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <CoverletOutput Condition=" '$(OutputPath)' != '' ">$([MSBuild]::EnsureTrailingSlash('$(OutputPath)'))</CoverletOutput>
+    <CoverletOutputFormat>cobertura,json</CoverletOutputFormat>
+    <CoverletOutputFormat Condition=" '$(GITHUB_ACTIONS)' != '' ">$(CoverletOutputFormat),opencover</CoverletOutputFormat>
+    <Exclude>[System.*]*,[*Test*]*,[xunit.*]*</Exclude>
+    <ExcludeByAttribute>GeneratedCodeAttribute</ExcludeByAttribute>
+    <MergeWith>$(CoverletOutput)coverage.json</MergeWith>
+  </PropertyGroup>
+</Project>
